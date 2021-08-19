@@ -23,7 +23,7 @@ const Chat: React.FC = () => {
     const name = router.query.name;
     React.useEffect(() => {
        
-        socketRef.current = io('https://sever-web-chat.vercel.app',{
+        socketRef.current = io('https://serverchatexample.herokuapp.com',{
           withCredentials: true,
          
         })
@@ -32,7 +32,6 @@ const Chat: React.FC = () => {
             socketRef.current.emit('sendUser', name)
             setId(data)
         })
-
         socketRef.current.on('OnTyping', (data : string) => {
             setTyping(data)
         })
